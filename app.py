@@ -4,7 +4,7 @@ import os
 import aiapi
 
 COMPLETIONS_MODEL = "text-davinci-003"
-openai.api_key = os.getenv('my_api_key')
+openai.api_key = os.getenv('my_new_api_key_here')
 
 app = Flask(__name__)
 
