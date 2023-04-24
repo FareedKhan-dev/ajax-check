@@ -12,7 +12,14 @@ app = Flask(__name__)
 def index():
   if request.method == 'POST':
     prompt = request.form['prompt']
-    answer = aiapi.get_response_of_text(prompt)
+    answer = openai.Completion.create(
+    prompt=prompt,
+    temperature=1,
+    max_tokens=20,
+    top_p=1,
+    frequency_penalty=0,
+    presence_penalty=0,
+    model=COMPLETIONS_MODEL)["choices"][0]["text"].strip(" \n")
     return answer
 
   return render_template('index.html', **locals())
